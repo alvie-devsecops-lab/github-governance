@@ -7,7 +7,7 @@ resource "github_repository" "governance" {
   description = "Org rules as code: settings, teams, rulesets (lab)"
   visibility  = "public" # Free plan: rulesets only work on public repos
 
-  auto_init              = true  # creates main with a README, so rules have a branch to protect
+  auto_init              = true # creates main with a README, so rules have a branch to protect
   has_wiki               = false
   has_issues             = true
   delete_branch_on_merge = true

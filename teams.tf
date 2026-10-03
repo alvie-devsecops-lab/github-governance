@@ -12,3 +12,9 @@ resource "github_team_membership" "devsecops_alvaro" {
   username = "Alvie40"
   role     = "maintainer"
 }
+
+resource "github_team" "backend" {
+  name        = "backend"
+  description = "Writes the recordings API and worker"
+  privacy     = "closed"
+}
