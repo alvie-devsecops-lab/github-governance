@@ -1,0 +1,19 @@
+# Seeded by github-governance. Changes to this file need devsecops approval (CODEOWNERS).
+name: pr-checks
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read # least privilege: this workflow only reads
+
+jobs:
+  ticket-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR title must reference a ticket (traceability, IEC 62304)
+        env:
+          TITLE: ${{ github.event.pull_request.title }} # via env: no script injection
+        run: |
+          echo "$TITLE" | grep -Eq '[A-Z]+-[0-9]+' \
+            || { echo "::error::PR title must reference a ticket, e.g. SEN-123"; exit 1; }
